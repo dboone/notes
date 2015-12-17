@@ -1,19 +1,23 @@
 # Operating Systems: Three Easy Pieces
 
 > Operating Systems: Three Easy Pieces 
+>
 > Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau 
+>
 > Arpaci-Dusseau Books 
+>
 > March, 2015 (Version 0.90) 
 
 Read online: http://pages.cs.wisc.edu/~remzi/OSTEP/
 
 ## Preface
-The three easy pieces refer to virtualization, concurrency, and persistence.
+The three easy pieces in the title refer to **virtualization**, **concurrency**, and **persistence**.
 
 ## Chapter 2 - Introduction to Operating Systems
 ### Virtualizing the CPU
 ### Virtualizing Memory
 This example was particularly interesting. We create a program that performs the following:
+
 1. Dynamically allocate memory for an integer
 1. Print the address of the newly allocated memory
 1. Initialize the memory to 0
