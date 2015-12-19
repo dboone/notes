@@ -41,7 +41,7 @@ class WidgetManager : public CreationPolicy
 WidgetManager<OpNewCreator<WidgetManager> > widgetManager;
 ```
 
-It is strange that we have to specific `WidgetManager` twice in the above snippet. Is there a better way to do this?
+It is strange that we have to specify `WidgetManager` twice in the above snippet. Is there a better way to do this?
 
 ## 2. Techniques
 
