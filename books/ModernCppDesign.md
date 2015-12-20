@@ -38,10 +38,11 @@ class WidgetManager : public CreationPolicy
 
 ``` cpp
 // Usage 
-WidgetManager<OpNewCreator<WidgetManager> > widgetManager;
+WidgetManager<OpNewCreator<Widget> > widgetManager;
 ```
 
-It is strange that we have to specify `WidgetManager` twice in the above snippet. Is there a better way to do this?
+The use of public inheritance to implement policies means that users could call delete on a pointer that is behaving polymorphically. For example, the user could use a policy pointer to delete a host. Unless the base class, the policy, defines a virtual destructor, this is undefined behavior. Defining a virtual destructor would negatively impact performance and doesn't fit well with the static (compile-time) nature of the template code. The solution is to prevent users from creating this scenario by declaring a non-virtual protected destructor.
+
 
 ## 2. Techniques
 
