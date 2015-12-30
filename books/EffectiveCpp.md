@@ -11,10 +11,20 @@ The copyright date for this book is 1992, so there are bound to be some items th
 ### Item 1: Use `const` and `inline` instead of `#define`
 ### Item 2: Prefer `iostream.h` to `stdio.h`
 ### Item 3: Use `new` and `delete` instead of `malloc` and `free`
+The functions `malloc` and `free` come from C. This means that they are not aware of constructors or destructors. `malloc` will only allocate the memory required by the object, it will not initialize the memory. Likewise, `free` will delete the memory associated with the object. If the object has dynamically allocated members, the memory occupied by them will be leaked.
+
+Mixing `new` with `free` and `malloc` with `delete` is undefined behavior.
+
+free the malloc!
 ### Item 4: Prefer C++-style comments
+C++ introduced the `//` comment syntax. This type of comment should be preferred because it can be nested. C-style comments, of the form `/* */` cannot be nested.
 
 ## Memory Management
 ### Item 5: Use the same form in corresponding calls to `new` and `delete`
+The operators `new` and `delete` have two forms: `new`/`new[]` and `delete`/`delete[]`. It is important to use `new` and `delete` together and `new[]` and `delete[]` together.
+
+Using `delete` on memory that was allocated using `new[]` will only delete the first object in the array, leaking the memory occupied by remaining objects. Using `delete[]` on memory that was allocated using `new` is undefined behavior.
+
 ### Item 6: Call `delete` on pointer members in destructors
 ### Item 7: Check the return value of `new`
 ### Item 8: Adhere to convention when writing `new`
@@ -36,6 +46,8 @@ The copyright date for this book is 1992, so there are bound to be some items th
 ### Item 20: Avoid data members in the public interface
 ### Item 21: Use `const` whenever possible
 ### Item 22: Pass and return objects by reference instead of by value
+In C, everything is passed by value, including pointers.
+
 ### Item 23: Don't try to return a reference when you must return an object
 ### Item 24: Choose carefully between function overloading and parameter defaulting
 ### Item 25: Avoid overloading on a pointer and a numerical type
